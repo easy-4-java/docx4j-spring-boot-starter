@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.github.hiwepy</groupId>
-	<artifactId>docx4j-spring-boot-starter</artifactId>
+	<artifactId>-spring-boot-starter</artifactId>
 	<description>Spring Boot Starter For Docx4j</description>
 	<version>2.7.x.20240823.RELEASE</version>
 	<name>${project.groupId}:${project.artifactId}</name>
