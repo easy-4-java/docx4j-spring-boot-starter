@@ -1,0 +1,11 @@
+org.docx4j.spring.boot.Docx4jAutoConfiguration
+org.docx4j.spring.boot.Docx4jDocxTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jXhtmlTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jBeetlTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jFreemarkerTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jHttlTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jJetbrickTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jRythmTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jThymeleafTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jVelocityTemplateAutoConfiguration
+org.docx4j.spring.boot.Docx4jWebitTemplateAutoConfiguration
