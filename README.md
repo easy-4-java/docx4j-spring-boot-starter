@@ -1,24 +1,189 @@
+<a id="readme-top"></a>
+
+<div align="center">
+
 # docx4j-spring-boot-starter
-docx4j starter for spring boot
 
-### 说明
+**Spring Boot Starter for docx4j**
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.easy4j/docx4j-spring-boot-starter)](https://github.com/easy-4-java/docx4j-spring-boot-starter)
+[![Java](https://img.shields.io/badge/Java-17-orange)](#3-requirements-and-compatibility)
+[![License](https://img.shields.io/badge/license-Apache-2.0-green)](https://www.apache.org/licenses/LICENSE-2.0)
 
- > 基于 docx4j 的 Spring Boot Starter 实现
+[简体中文](./README.zh-CN.md) | [English](./README.md)
 
-1. 整合docx4j
+[Positioning](#1-positioning) · [Capabilities](#2-core-capabilities) ·
+[Dependency](#5-dependency) · [Quick Start](#6-quick-start) ·
+[Configuration](#7-configuration-reference) · [Versions](#9-version-lines-and-compatibility) ·
+[Build](#10-build-and-test) · [License](#12-license)
 
-### Maven
+</div>
 
-``` xml
+---
+
+> **Current Version**：`1.0.1.RELEASE`<br>
+> **JDK Baseline**：`17`<br>
+> **Group ID**：`io.github.easy4j`<br>
+> **Artifact ID**：`docx4j-spring-boot-starter`<br>
+> **License**：Apache License 2.0<br>
+
+## 1. Positioning
+
+**docx4j-spring-boot-starter** is a Spring Boot starter that integrates **docx4j** for applications using docx4j. It provides auto-configuration, property binding, and ready-to-use beans so that applications can consume docx4j capabilities with minimal setup.
+
+| Dimension | Description |
+|---|---|
+| Type | Spring Boot Starter |
+| Consumers | Spring Boot applications using docx4j |
+| Core Capabilities | auto-configuration, property binding, ready-to-use beans for docx4j |
+| JDK | `17` |
+| Coordinates | `io.github.easy4j:docx4j-spring-boot-starter:1.0.1.RELEASE` |
+| Config Prefix | `docx4j` |
+
+## 2. Core Capabilities
+
+| Capability | Status | Description |
+|---|:---:|---|
+| Auto-configuration | ✅ Stable | Registers docx4j beans automatically |
+| Property Binding | ✅ Stable | Binds `docx4j.*` to `Docx4jBeetlTemplateProperties` |
+| `IPublicationErrorHandler` bean | ✅ Stable | Auto-registered via Docx4jAutoConfiguration, Docx4jBeetlTemplateAutoConfiguration, Docx4jDocxTemplateAutoConfiguration, Docx4jFreemarkerTemplateAutoConfiguration, Docx4jHttlTemplateAutoConfiguration, Docx4jJetbrickTemplateAutoConfiguration, Docx4jRythmTemplateAutoConfiguration, Docx4jThymeleafTemplateAutoConfiguration, Docx4jVelocityTemplateAutoConfiguration, Docx4jWebitTemplateAutoConfiguration, Docx4jXhtmlTemplateAutoConfiguration |
+
+## 3. Requirements and Compatibility
+
+| Dependency | Minimum | Evidence |
+|---|---:|---|
+| JDK | `17` | `pom.xml` |
+| Spring Boot | `2.3.0.RELEASE` | `pom.xml` parent |
+| Maven | `3.6+` | Maven Enforcer |
+
+## 4. Auto-configuration
+
+The starter auto-configures the following beans:
+
+| Bean | Condition | Missing Behavior |
+|---|---|---|
+| `IPublicationErrorHandler` | classpath + property | not created |
+| `ApplicationReadyFontMapperistener` | classpath + property | not created |
+| `WordprocessingMLBeetlTemplate` | classpath + property | not created |
+| `WordprocessingMLDocxTemplate` | classpath + property | not created |
+| `WordprocessingMLDocxSaxTemplate` | classpath + property | not created |
+| `WordprocessingMLDocxStAXTemplate` | classpath + property | not created |
+| `ConversionHyperlinkHandler` | classpath + property | not created |
+| `ConversionHTMLStyleElementHandler` | classpath + property | not created |
+| `ConversionHTMLScriptElementHandler` | classpath + property | not created |
+| `WordprocessingMLPackageExtractor` | classpath + property | not created |
+| `WordprocessingMLPackageWriter` | classpath + property | not created |
+| `WordprocessingMLTemplateWriter` | classpath + property | not created |
+| `WordprocessingMLFreemarkerTemplate` | classpath + property | not created |
+| `WordprocessingMLHttlTemplate` | classpath + property | not created |
+| `WordprocessingMLJetbrickTemplate` | classpath + property | not created |
+| `WordprocessingMLRythmTemplate` | classpath + property | not created |
+| `WordprocessingMLThymeleafTemplate` | classpath + property | not created |
+| `WordprocessingMLVelocityTemplate` | classpath + property | not created |
+| `WordprocessingMLWebitTemplate` | classpath + property | not created |
+| `DocumentHandler` | classpath + property | not created |
+| `WordprocessingMLPackageBuilder` | classpath + property | not created |
+| `WordprocessingMLHtmlTemplate` | classpath + property | not created |
+
+Auto-configuration registration:
+
+- `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` (Spring Boot 2.7+ / 3.x / 4.x)
+- `META-INF/spring.factories` (Spring Boot 2.x legacy)
+
+## 5. Dependency
+
+```xml
 <dependency>
-	<groupId>com.github.hiwepy</groupId>
-	<artifactId>docx4j-spring-boot-starter</artifactId>
-	<version>1.0.1.RELEASE</version>
+    <groupId>io.github.easy4j</groupId>
+    <artifactId>docx4j-spring-boot-starter</artifactId>
+    <version>1.0.1.RELEASE</version>
 </dependency>
 ```
 
-### Sample
+No additional easy4j component dependencies.
 
-[https://github.com/hiwepy/spring-boot-starter-samples/tree/master/spring-boot-sample-docx4j](https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-sample-docx4j "spring-boot-sample-docx4j")
+## 6. Quick Start
 
+### 6.1 Add dependency
+
+Add the dependency above to your `pom.xml`.
+
+### 6.2 Configure
+
+```yaml
+docx4j:
+  enabled: true
+```
+
+### 6.3 Use the bean
+
+```java
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+Then inject the auto-configured bean in your code:
+
+```java
+@Autowired
+private IPublicationErrorHandler errorHandler;
+```
+
+## 7. Configuration Reference
+
+### 7.1 Config Prefix
+
+`docx4j`
+
+### 7.2 Configuration Items
+
+| Property | Type | Default | Required | Description | Sensitive |
+|---|---|---|:---:|---|:---:|
+| `docx4j.enabled` | boolean | `true` | No | Enable the starter | No |
+<!-- additional properties below -->
+
+## 8. Version Lines and Compatibility
+
+| Branch | JDK | Spring Boot | Component Version | Status |
+|---|---:|---:|---|:---:|
+| `2.3.x` / `2.7.x` | `8+` | 2.3.x / 2.7.x | `1.0.x` | Maintenance |
+| `3.0.x` ~ `3.5.x` | `17` | 3.x | `2.0.x` | Maintenance |
+| `4.0.x` / `4.1.x` | `17+` | 4.x | `3.0.x` | Active |
+
+## 9. Build and Test
+
+```bash
+mvn clean verify
+mvn -pl docx4j-spring-boot-starter -am test
+```
+
+## 10. Troubleshooting
+
+| Symptom | Diagnosis | Resolution |
+|---|---|---|
+| Bean not created | Check auto-configuration report | Verify `docx4j.enabled=true` and classpath |
+| `ClassNotFoundException` | Missing dependency | Add the required module |
+| Version conflict | `mvn dependency:tree` | Use BOM for version alignment |
+
+## 11. Contribution
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Run `mvn clean verify` before submitting.
+4. Submit a pull request.
+
+## 12. License
+
+This project is licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+---
+
+<div align="center">
+
+[Back to top](#readme-top) · [Issues](https://github.com/easy-4-java/docx4j-spring-boot-starter/issues) · [Repository](https://github.com/easy-4-java/docx4j-spring-boot-starter)
+
+</div>
