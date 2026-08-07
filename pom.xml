@@ -13,7 +13,7 @@
     <groupId>io.github.easy4j</groupId>
     <artifactId>docx4j-spring-boot-starter</artifactId>
     <description>Spring Boot Starter For Docx4j</description>
-    <version>2.7.x.20260527-SNAPSHOT</version>
+    <version>2.7.x.20260630-SNAPSHOT</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <url>https://github.com/easy-4-java/${project.artifactId}</url>
     <packaging>jar</packaging>
@@ -404,6 +404,7 @@
     </profiles>
 
     <properties>
+        <java.version>1.8</java.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -418,7 +419,7 @@
         <!-- Docx4j OpenXML -->
         <docx4j-openxml.version>${docx4j.version}</docx4j-openxml.version>
         <!-- Docx4j Template -->
-         <docx4j-template.version>1.0.1.RELEASE</docx4j-template.version>
+         <docx4j-template.version>1.0.x.20260630-SNAPSHOT</docx4j-template.version>
          <persistence.version>2.7.6</persistence.version>
          <jaxb-impl.version>2.4.0-b180830.0438</jaxb-impl.version>
          <maven.version>3.0</maven.version>
@@ -762,7 +763,7 @@
         </dependency>
 
         <!-- Docx4j JAXB Internal
-        <!-- https://mvnrepository.com/artifact/org.docx4j/docx4j-JAXB-Internal -->
+        https://mvnrepository.com/artifact/org.docx4j/docx4j-JAXB-Internal
         <dependency>
             <groupId>org.docx4j</groupId>
             <artifactId>docx4j-JAXB-Internal</artifactId>
@@ -775,17 +776,17 @@
             <groupId>org.docx4j</groupId>
             <artifactId>docx4j-JAXB-MOXy</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.asm -->
+        https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.asm
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.asm</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.core -->
+        https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.core
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.moxy -->
+        https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.moxy
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.moxy</artifactId>
