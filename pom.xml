@@ -419,7 +419,7 @@
         <!-- Docx4j OpenXML -->
         <docx4j-openxml.version>${docx4j.version}</docx4j-openxml.version>
         <!-- Docx4j Template -->
-         <docx4j-template.version>1.0.1.RELEASE</docx4j-template.version>
+         <docx4j-template.version>1.0.x.20260630-SNAPSHOT</docx4j-template.version>
          <persistence.version>2.7.6</persistence.version>
          <jaxb-impl.version>2.4.0-b180830.0438</jaxb-impl.version>
          <maven.version>3.0</maven.version>
