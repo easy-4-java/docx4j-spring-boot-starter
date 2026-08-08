@@ -12,6 +12,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.TemplateEngine;
 
+/**
+ * Auto-configuration for the Thymeleaf-based Docx template engine, activated when
+ * {@code docx4j.enabled=true} and the Thymeleaf {@link TemplateEngine} and
+ * {@link WordprocessingMLThymeleafTemplate} classes are present.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jXhtmlTemplateAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, TemplateEngine.class , WordprocessingMLThymeleafTemplate.class })
@@ -19,15 +26,16 @@ import org.thymeleaf.TemplateEngine;
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jThymeleafTemplateProperties.class })
 public class Docx4jThymeleafTemplateAutoConfiguration {
 
+	/** Create the {@link WordprocessingMLThymeleafTemplate} bean backed by the optional Thymeleaf {@link TemplateEngine}. @param docx4jProperties docx4j properties @param templateProperties thymeleaf template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Thymeleaf template engine @return a configured Thymeleaf Docx template */
 	@Bean
 	public WordprocessingMLThymeleafTemplate wmlThymeleafTemplate(
 			Docx4jProperties docx4jProperties,
-			Docx4jThymeleafTemplateProperties templateProperties, 
+			Docx4jThymeleafTemplateProperties templateProperties,
 			WordprocessingMLHtmlTemplate wmlHtmlTemplate,
 			@Autowired(required = false) TemplateEngine engine) {
 		WordprocessingMLThymeleafTemplate template = new WordprocessingMLThymeleafTemplate(wmlHtmlTemplate);
 		template.setEngine(engine);
 		return template;
 	}
-	
+
 }

@@ -17,9 +17,15 @@ package org.docx4j.spring.boot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * Configuration properties holder for the Jetbrick Docx template engine, bound to the
+ * {@code docx4j.template.jetbrick.*} prefix.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @ConfigurationProperties(Docx4jJetbrickTemplateProperties.PREFIX)
 public class Docx4jJetbrickTemplateProperties {
 
 	public static final String PREFIX = "docx4j.template.jetbrick";
-	
+
 }

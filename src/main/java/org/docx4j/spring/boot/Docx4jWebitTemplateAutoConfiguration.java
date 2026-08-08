@@ -13,6 +13,12 @@ import org.springframework.context.annotation.Configuration;
 
 import webit.script.Engine;
 
+/**
+ * Auto-configuration for the Webit-based Docx template engine, activated when {@code docx4j.enabled=true}
+ * and the Webit {@link Engine} and {@link WordprocessingMLWebitTemplate} classes are present.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jXhtmlTemplateAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, Engine.class , WordprocessingMLWebitTemplate.class })
@@ -20,15 +26,16 @@ import webit.script.Engine;
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jWebitTemplateProperties.class })
 public class Docx4jWebitTemplateAutoConfiguration {
 
+	/** Create the {@link WordprocessingMLWebitTemplate} bean backed by the optional Webit {@link Engine}. @param docx4jProperties docx4j properties @param templateProperties webit template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Webit engine @return a configured Webit Docx template */
 	@Bean
 	public WordprocessingMLWebitTemplate wmlWebitTemplate(
 			Docx4jProperties docx4jProperties,
-			Docx4jWebitTemplateProperties templateProperties, 
+			Docx4jWebitTemplateProperties templateProperties,
 			WordprocessingMLHtmlTemplate wmlHtmlTemplate,
 			@Autowired(required = false) Engine engine) {
 		WordprocessingMLWebitTemplate template = new WordprocessingMLWebitTemplate(wmlHtmlTemplate);
 		template.setEngine(engine);
 		return template;
 	}
-	
+
 }

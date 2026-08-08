@@ -11,6 +11,13 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Auto-configuration for the Freemarker-based Docx template engine, activated when
+ * {@code docx4j.enabled=true} and Freemarker's {@link freemarker.template.Configuration} and
+ * {@link WordprocessingMLFreemarkerTemplate} classes are present.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jXhtmlTemplateAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, freemarker.template.Configuration.class , WordprocessingMLFreemarkerTemplate.class })
@@ -18,15 +25,16 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jFreemarkerTemplateProperties.class })
 public class Docx4jFreemarkerTemplateAutoConfiguration {
 
+	/** Create the {@link WordprocessingMLFreemarkerTemplate} bean backed by the optional Freemarker configuration. @param docx4jProperties docx4j properties @param templateProperties freemarker template properties @param wmlHtmlTemplate shared XHTML template @param configuration optional Freemarker configuration @return a configured Freemarker Docx template */
 	@Bean
 	public WordprocessingMLFreemarkerTemplate wmlFreemarkerTemplate(
 			Docx4jProperties docx4jProperties,
-			Docx4jFreemarkerTemplateProperties templateProperties, 
+			Docx4jFreemarkerTemplateProperties templateProperties,
 			WordprocessingMLHtmlTemplate wmlHtmlTemplate,
 			@Autowired(required = false) freemarker.template.Configuration configuration) {
 		WordprocessingMLFreemarkerTemplate template = new WordprocessingMLFreemarkerTemplate(wmlHtmlTemplate);
 		template.setEngine(configuration);
 		return template;
 	}
-	
+
 }

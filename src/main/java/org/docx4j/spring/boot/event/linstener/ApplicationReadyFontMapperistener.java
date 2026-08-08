@@ -22,17 +22,28 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.util.CollectionUtils;
 
+/**
+ * {@link ApplicationListener} that initialises the Docx4j font mapper once the application is ready.
+ * <p>When font discovery is enabled it spawns a background thread that chooses an
+ * {@link IdentityPlusMapper} on Windows (or systems with Microsoft fonts installed) or a
+ * {@link BestMatchingMapper} (Panose-based) on other systems, then applies the default Chinese font
+ * mappings and any user-supplied custom font/alias mappings.</p>
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 public class ApplicationReadyFontMapperistener
 		implements ApplicationListener<ApplicationReadyEvent>, ResourceLoaderAware {
 
 	protected static Logger LOG = LoggerFactory.getLogger(Docx4jAutoConfiguration.class);
 	protected ResourceLoader resourceLoader;
 	protected final Docx4jProperties docx4jProperties;
-	
+
+	/** Create a listener bound to the given Docx4j properties. @param docx4jProperties docx4j properties */
 	public ApplicationReadyFontMapperistener(Docx4jProperties docx4jProperties) {
 		this.docx4jProperties  = docx4jProperties;
 	}
 
+	/** When font discovery is enabled, asynchronously build and register the Docx4j font mapper. @param event the application ready event */
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		if(docx4jProperties.isDiscoverFonts()) {
@@ -104,6 +115,7 @@ public class ApplicationReadyFontMapperistener
 		}
 	}
 
+	/** Apply the user-supplied font-name-to-location mappings (and their aliases) to the font mapper. @param fontMapper the font mapper to populate @param fontMap the font name to location mapping */
 	protected void customFontMapper(Mapper fontMapper, Map<String, String> fontMap) {
 		if (CollectionUtils.isEmpty(fontMap)) {
 			return;
@@ -144,6 +156,7 @@ public class ApplicationReadyFontMapperistener
 
 	}
 
+	/** Register the built-in mappings for common Chinese fonts to resolve Chinese character compatibility. @param fontMapper the font mapper to populate */
 	protected void defaultFontMapper(Mapper fontMapper) {
 
 		// 进行中文字体兼容处理
@@ -164,6 +177,7 @@ public class ApplicationReadyFontMapperistener
 		
 	}
 
+	/** Inject the {@link ResourceLoader} used to resolve custom font file locations. @param resourceLoader the resource loader */
 	@Override
 	public void setResourceLoader(ResourceLoader resourceLoader) {
 		this.resourceLoader = resourceLoader;

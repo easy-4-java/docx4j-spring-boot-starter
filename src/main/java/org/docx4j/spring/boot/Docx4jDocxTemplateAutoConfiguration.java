@@ -25,6 +25,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Auto-configuration for the Docx template engines (default, SAX and StAX) and the shared conversion
+ * handlers, package extractor/writer and template writer, activated when {@code docx4j.enabled=true}.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, WordprocessingMLDocxTemplate.class })
@@ -34,6 +40,7 @@ public class Docx4jDocxTemplateAutoConfiguration {
 
 	protected static Logger LOG = LoggerFactory.getLogger(Docx4jDocxTemplateAutoConfiguration.class);
 
+	/** Create the default {@link WordprocessingMLDocxTemplate} bean. @return a new Docx template @throws IOException if initialisation fails */
 	@Bean
 	public WordprocessingMLDocxTemplate wmlDocxTemplate()
 			throws IOException {
@@ -41,13 +48,15 @@ public class Docx4jDocxTemplateAutoConfiguration {
 		return template;
 	}
 
+	/** Create the SAX-based {@link WordprocessingMLDocxSaxTemplate} bean. @return a new SAX Docx template @throws IOException if initialisation fails */
 	@Bean
 	public WordprocessingMLDocxSaxTemplate wmlDocxSaxTemplate()
 			throws IOException {
 		WordprocessingMLDocxSaxTemplate template = new WordprocessingMLDocxSaxTemplate();
 		return template;
 	}
-	
+
+	/** Create the StAX-based {@link WordprocessingMLDocxStAXTemplate} bean. @return a new StAX Docx template @throws IOException if initialisation fails */
 	@Bean
 	public WordprocessingMLDocxStAXTemplate wmlDocxStAXTemplate()
 			throws IOException {
@@ -55,30 +64,35 @@ public class Docx4jDocxTemplateAutoConfiguration {
 		return template;
 	}
 
+	/** Provide the default {@link ConversionHyperlinkHandler} unless one already exists. @return the hyperlink handler */
 	@Bean
 	@ConditionalOnMissingBean
 	public ConversionHyperlinkHandler hyperlinkHandler() {
 		return OutputConversionHyperlinkHandler.getHyperlinkHandler();
 	}
 
+	/** Provide the default {@link ConversionHTMLStyleElementHandler} unless one already exists. @return the style element handler */
 	@Bean
 	@ConditionalOnMissingBean
 	public ConversionHTMLStyleElementHandler styleElementHandler() {
 		return OutputConversionHTMLStyleElementHandler.getStyleElementHandler();
 	}
 
+	/** Provide the default {@link ConversionHTMLScriptElementHandler} unless one already exists. @return the script element handler */
 	@Bean
 	@ConditionalOnMissingBean
 	public ConversionHTMLScriptElementHandler scriptElementHandler() {
 		return OutputConversionHTMLScriptElementHandler.getScriptElementHandler();
 	}
 
+	/** Provide the default {@link WordprocessingMLPackageExtractor} unless one already exists. @return the package extractor */
 	@Bean
 	@ConditionalOnMissingBean
 	public WordprocessingMLPackageExtractor wmlPackageExtractor() {
 		return WordprocessingMLPackageExtractor.getWMLPackageExtractor();
 	}
 
+	/** Provide the default {@link WordprocessingMLPackageWriter} wired with the conversion handlers unless one already exists. @param hyperlinkHandler hyperlink handler @param scriptElementHandler script element handler @param styleElementHandler style element handler @return the configured package writer */
 	@Bean
 	@ConditionalOnMissingBean
 	public WordprocessingMLPackageWriter wmlPackageWriter(ConversionHyperlinkHandler hyperlinkHandler,
@@ -91,6 +105,7 @@ public class Docx4jDocxTemplateAutoConfiguration {
 		return wmlPackageWriter;
 	}
 
+	/** Provide the default {@link WordprocessingMLTemplateWriter} unless one already exists. @return the template writer */
 	@Bean
 	@ConditionalOnMissingBean
 	public WordprocessingMLTemplateWriter wmlTemplateWriter() {

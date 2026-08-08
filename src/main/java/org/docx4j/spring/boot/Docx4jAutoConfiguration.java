@@ -17,35 +17,45 @@ import org.springframework.context.annotation.Configuration;
 import net.engio.mbassy.bus.MBassador;
 import net.engio.mbassy.bus.error.IPublicationErrorHandler;
 
+/**
+ * Core Docx4j auto-configuration that wires the Docx4j event bus, registers an SLF4J publication
+ * error handler and the font-mapper listener, activated when {@code docx4j.enabled=true}.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @ConditionalOnClass({ Docx4J.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class })
 public class Docx4jAutoConfiguration {
-	
+
 	@Autowired
 	protected MBassador<Docx4jEvent> eventbus;
-	
+
+	/** Bind the configured event bus to {@link Docx4J} as its global event notifier. */
 	@PostConstruct
 	public void bindEventBus() {
 		Docx4J.setEventNotifier(eventbus);
 	}
-	
+
+	/** Provide a default SLF4J-backed {@link IPublicationErrorHandler} unless one already exists. @return an Slf4jLogger */
 	@Bean
 	@ConditionalOnMissingBean
 	public IPublicationErrorHandler errorHandler() {
 		return new Slf4jLogger();
 	}
-	
+
+	/** Provide a default {@link MBassador} event bus for {@link Docx4jEvent} unless one already exists. @param errorHandler publication error handler @return a new MBassador event bus */
 	@Bean
 	@ConditionalOnMissingBean
 	public MBassador<Docx4jEvent> eventbus(IPublicationErrorHandler errorHandler) {
 		return new MBassador<Docx4jEvent>(errorHandler);
 	}
-	
+
+	/** Register the {@link ApplicationReadyFontMapperistener} that initialises the Docx4j font mapper. @param docx4jProperties docx4j properties @return the font mapper listener */
 	@Bean
 	public ApplicationReadyFontMapperistener fontMapperistener(Docx4jProperties docx4jProperties) {
 		return new ApplicationReadyFontMapperistener(docx4jProperties);
 	}
-	
+
 }

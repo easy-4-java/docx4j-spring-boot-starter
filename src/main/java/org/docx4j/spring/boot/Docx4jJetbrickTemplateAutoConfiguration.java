@@ -13,6 +13,13 @@ import org.springframework.context.annotation.Configuration;
 
 import jetbrick.template.JetEngine;
 
+/**
+ * Auto-configuration for the Jetbrick-based Docx template engine, activated when
+ * {@code docx4j.enabled=true} and the Jetbrick {@link JetEngine} and
+ * {@link WordprocessingMLJetbrickTemplate} classes are present.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jXhtmlTemplateAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, JetEngine.class , WordprocessingMLJetbrickTemplate.class })
@@ -20,15 +27,16 @@ import jetbrick.template.JetEngine;
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jJetbrickTemplateProperties.class })
 public class Docx4jJetbrickTemplateAutoConfiguration {
 
+	/** Create the {@link WordprocessingMLJetbrickTemplate} bean backed by the optional Jetbrick {@link JetEngine}. @param docx4jProperties docx4j properties @param templateProperties jetbrick template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Jetbrick engine @return a configured Jetbrick Docx template */
 	@Bean
 	public WordprocessingMLJetbrickTemplate wmlJetbrickTemplate(
 			Docx4jProperties docx4jProperties,
-			Docx4jJetbrickTemplateProperties templateProperties, 
+			Docx4jJetbrickTemplateProperties templateProperties,
 			WordprocessingMLHtmlTemplate wmlHtmlTemplate,
 			@Autowired(required = false) JetEngine engine) {
 		WordprocessingMLJetbrickTemplate template = new WordprocessingMLJetbrickTemplate(wmlHtmlTemplate);
 		template.setEngine(engine);
 		return template;
 	}
-	
+
 }

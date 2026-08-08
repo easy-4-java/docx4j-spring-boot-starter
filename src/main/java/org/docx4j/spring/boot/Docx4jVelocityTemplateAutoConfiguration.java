@@ -13,6 +13,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.TemplateEngine;
 
+/**
+ * Auto-configuration for the Velocity-based Docx template engine, activated when
+ * {@code docx4j.enabled=true} and the {@link VelocityEngine} and
+ * {@link WordprocessingMLVelocityTemplate} classes are present.
+ * @author [@Loong Wan](https://github.com/loong10k)
+ * @since 1.0.0
+ */
 @Configuration
 @AutoConfigureAfter(Docx4jXhtmlTemplateAutoConfiguration.class)
 @ConditionalOnClass({ Docx4J.class, TemplateEngine.class , WordprocessingMLVelocityTemplate.class })
@@ -20,15 +27,16 @@ import org.thymeleaf.TemplateEngine;
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jVelocityTemplateProperties.class })
 public class Docx4jVelocityTemplateAutoConfiguration {
 
+	/** Create the {@link WordprocessingMLVelocityTemplate} bean backed by the optional {@link VelocityEngine}. @param docx4jProperties docx4j properties @param templateProperties velocity template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Velocity engine @return a configured Velocity Docx template */
 	@Bean
 	public WordprocessingMLVelocityTemplate wmlVelocityTemplate(
 			Docx4jProperties docx4jProperties,
-			Docx4jVelocityTemplateProperties templateProperties, 
+			Docx4jVelocityTemplateProperties templateProperties,
 			WordprocessingMLHtmlTemplate wmlHtmlTemplate,
 			@Autowired(required = false) VelocityEngine engine) {
 		WordprocessingMLVelocityTemplate template = new WordprocessingMLVelocityTemplate(wmlHtmlTemplate);
 		template.setEngine(engine);
 		return template;
 	}
-	
+
 }
