@@ -1,12 +1,10 @@
 package org.docx4j.spring.boot;
 
 
-import jakarta.annotation.PostConstruct;
 import org.docx4j.Docx4J;
 import org.docx4j.events.Docx4jEvent;
 import org.docx4j.spring.boot.event.linstener.ApplicationReadyFontMapperistener;
 import org.docx4j.template.bus.error.Slf4jLogger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -29,15 +27,6 @@ import net.engio.mbassy.bus.error.IPublicationErrorHandler;
 @EnableConfigurationProperties({ Docx4jProperties.class })
 public class Docx4jAutoConfiguration {
 
-	@Autowired
-	protected MBassador<Docx4jEvent> eventbus;
-
-	/** Bind the configured event bus to {@link Docx4J} as its global event notifier. */
-	@PostConstruct
-	public void bindEventBus() {
-		Docx4J.setEventNotifier(eventbus);
-	}
-
 	/** Provide a default SLF4J-backed {@link IPublicationErrorHandler} unless one already exists. @return an Slf4jLogger */
 	@Bean
 	@ConditionalOnMissingBean
@@ -45,11 +34,14 @@ public class Docx4jAutoConfiguration {
 		return new Slf4jLogger();
 	}
 
-	/** Provide a default {@link MBassador} event bus for {@link Docx4jEvent} unless one already exists. @param errorHandler publication error handler @return a new MBassador event bus */
+	/** Provide a default {@link MBassador} event bus for {@link Docx4jEvent} unless one already exists,
+	 *  and bind it to {@link Docx4J} as its global event notifier. @param errorHandler publication error handler @return a new MBassador event bus */
 	@Bean
 	@ConditionalOnMissingBean
 	public MBassador<Docx4jEvent> eventbus(IPublicationErrorHandler errorHandler) {
-		return new MBassador<Docx4jEvent>(errorHandler);
+		MBassador<Docx4jEvent> bus = new MBassador<>(errorHandler);
+		Docx4J.setEventNotifier(bus);
+		return bus;
 	}
 
 	/** Register the {@link ApplicationReadyFontMapperistener} that initialises the Docx4j font mapper. @param docx4jProperties docx4j properties @return the font mapper listener */

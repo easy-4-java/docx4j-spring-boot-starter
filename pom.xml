@@ -503,19 +503,21 @@
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         
          
-        <docx4j.version>11.5.0</docx4j.version>
+        <docx4j.version>8.3.11</docx4j.version>
         <docx4j-export-fo.version>${docx4j.version}</docx4j-export-fo.version>
-        
-        <docx4j-xhtml-import.version>11.4.8</docx4j-xhtml-import.version>
+
+        <docx4j-xhtml-import.version>8.3.11</docx4j-xhtml-import.version>
         <docx4j-xhtml-renderer.version>3.0.0</docx4j-xhtml-renderer.version>
         
         <docx4j-jaxb.version>${docx4j.version}</docx4j-jaxb.version>
         
         <docx4j-openxml.version>${docx4j.version}</docx4j-openxml.version>
         
-         <docx4j-template.version>3.0.x.20260630-SNAPSHOT</docx4j-template.version>
+         <docx4j-template.version>1.0.1.RELEASE</docx4j-template.version>
          <persistence.version>2.7.6</persistence.version>
          <jaxb-impl.version>2.4.0-b180830.0438</jaxb-impl.version>
+         <jaxb-api.version>2.3.1</jaxb-api.version>
+         <glassfish-jaxb.version>2.3.9</glassfish-jaxb.version>
                 <commons-io.version>2.22.0</commons-io.version>
                 <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
                 <slf4j.version>2.0.18</slf4j.version>
@@ -534,6 +536,18 @@
             
 
             
+            <!-- Force the javax.xml.bind (not jakarta) JAXB stack required by docx4j 8.x -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${glassfish-jaxb.version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/org.docx4j/docx4j-core -->
             <dependency>
                 <groupId>org.docx4j</groupId>
@@ -676,9 +690,9 @@
                 <version>${docx4j-openxml.version}</version>
             </dependency>
 
-            <!-- Source: https://github.com/easy-4-java/docx4j-template-bom — easy4j docx4j-template-bom -->
+            <!-- Source: https://github.com/hiwepy/docx4j-template-bom — docx4j-template-bom -->
             <dependency>
-                <groupId>io.github.easy4j</groupId>
+                <groupId>com.github.hiwepy</groupId>
                 <artifactId>docx4j-template-bom</artifactId>
                 <version>${docx4j-template.version}</version>
                 <type>pom</type>
@@ -770,13 +784,16 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
 
-        
+        <!-- javax.xml.bind JAXB API + runtime required by docx4j 8.x on JDK 11+ -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+        </dependency>
 
-        
-
-        
-
-        
         <!-- https://mvnrepository.com/artifact/org.docx4j/docx4j-core -->
         <dependency>
             <groupId>org.docx4j</groupId>
@@ -834,66 +851,66 @@
 
         <!-- Source: https://github.com/easy-4-java/docx4j-template-core — easy4j docx4j-template-core -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-core</artifactId>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-beetl — easy4j docx4j-template-beetl -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-beetl</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-freemarker — easy4j docx4j-template-freemarker -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-freemarker</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-httl — easy4j docx4j-template-httl -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-httl</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-jetbrick — easy4j docx4j-template-jetbrick -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-jetbrick</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-jsp — easy4j docx4j-template-jsp -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-jsp</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-rythm — easy4j docx4j-template-rythm -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-rythm</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-thymeleaf — easy4j docx4j-template-thymeleaf -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-thymeleaf</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-velocity — easy4j docx4j-template-velocity -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-velocity</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-webit — easy4j docx4j-template-webit -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-webit</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- Source: https://github.com/easy-4-java/docx4j-template-xhtml — easy4j docx4j-template-xhtml -->
         <dependency>
-            <groupId>io.github.easy4j</groupId>
+            <groupId>com.github.hiwepy</groupId>
             <artifactId>docx4j-template-xhtml</artifactId>
             <scope>provided</scope>
         </dependency>
