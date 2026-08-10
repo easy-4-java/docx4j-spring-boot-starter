@@ -18,7 +18,7 @@ import net.engio.mbassy.bus.error.IPublicationErrorHandler;
 /**
  * Core Docx4j auto-configuration that wires the Docx4j event bus, registers an SLF4J publication
  * error handler and the font-mapper listener, activated when {@code docx4j.enabled=true}.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

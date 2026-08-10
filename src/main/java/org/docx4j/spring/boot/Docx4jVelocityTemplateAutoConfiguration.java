@@ -17,7 +17,7 @@ import org.thymeleaf.TemplateEngine;
  * Auto-configuration for the Velocity-based Docx template engine, activated when
  * {@code docx4j.enabled=true} and the {@link VelocityEngine} and
  * {@link WordprocessingMLVelocityTemplate} classes are present.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

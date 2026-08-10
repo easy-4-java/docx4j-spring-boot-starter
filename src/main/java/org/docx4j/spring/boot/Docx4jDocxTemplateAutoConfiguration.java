@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Auto-configuration for the Docx template engines (default, SAX and StAX) and the shared conversion
  * handlers, package extractor/writer and template writer, activated when {@code docx4j.enabled=true}.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

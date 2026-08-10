@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * Auto-configuration for the Freemarker-based Docx template engine, activated when
  * {@code docx4j.enabled=true} and Freemarker's {@link freemarker.template.Configuration} and
  * {@link WordprocessingMLFreemarkerTemplate} classes are present.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

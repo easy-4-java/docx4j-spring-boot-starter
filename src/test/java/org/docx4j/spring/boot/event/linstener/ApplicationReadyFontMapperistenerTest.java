@@ -18,7 +18,7 @@ import org.springframework.core.io.DefaultResourceLoader;
 
 /**
  * Tests for {@link ApplicationReadyFontMapperistener}.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class ApplicationReadyFontMapperistenerTest {
 

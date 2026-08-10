@@ -16,7 +16,7 @@ import httl.Engine;
 /**
  * Auto-configuration for the HTTL-based Docx template engine, activated when {@code docx4j.enabled=true}
  * and the HTTL {@link Engine} and {@link WordprocessingMLHttlTemplate} classes are present.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

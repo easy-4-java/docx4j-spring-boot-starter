@@ -22,7 +22,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Configuration properties for the Docx template engine, bound to the {@code docx4j.template.docx.*} prefix.
  * <p>Configures placeholder delimiters, input/output character encoding and whether intermediate template
  * files are deleted automatically after rendering.</p>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jDocxTemplateProperties.PREFIX)

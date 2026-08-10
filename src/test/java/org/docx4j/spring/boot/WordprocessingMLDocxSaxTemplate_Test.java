@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
  * <p>The SAX variable-replace pipeline relies on a JAXP identity transformer that is unreliable on
  * modern JDKs, so the render path is exercised through {@link WordprocessingMLDocxTemplate} instead;
  * here we only assert the template instance can be created and is able to load a real document.</p>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 public class WordprocessingMLDocxSaxTemplate_Test {
 

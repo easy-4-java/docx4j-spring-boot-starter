@@ -24,7 +24,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Configuration properties for the Docx4j Spring Boot starter, bound to the {@code docx4j.*} prefix.
  * <p>Controls the starter enable flag, altChunk support, landscape orientation, font discovery and the
  * font-name-to-location and font-name-to-alias mappings used to resolve (and fix Chinese garbled) fonts.</p>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jProperties.PREFIX)

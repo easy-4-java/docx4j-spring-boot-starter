@@ -28,7 +28,7 @@ import org.springframework.util.CollectionUtils;
  * {@link IdentityPlusMapper} on Windows (or systems with Microsoft fonts installed) or a
  * {@link BestMatchingMapper} (Panose-based) on other systems, then applies the default Chinese font
  * mappings and any user-supplied custom font/alias mappings.</p>
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class ApplicationReadyFontMapperistener

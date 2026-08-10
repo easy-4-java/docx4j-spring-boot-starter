@@ -20,7 +20,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Configuration properties holder for the Freemarker Docx template engine, bound to the
  * {@code docx4j.template.freemarker.*} prefix.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jFreemarkerTemplateProperties.PREFIX)

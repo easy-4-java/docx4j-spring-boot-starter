@@ -16,7 +16,7 @@ import webit.script.Engine;
 /**
  * Auto-configuration for the Webit-based Docx template engine, activated when {@code docx4j.enabled=true}
  * and the Webit {@link Engine} and {@link WordprocessingMLWebitTemplate} classes are present.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

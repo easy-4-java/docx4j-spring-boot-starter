@@ -20,7 +20,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 /**
  * Tests for the template-engine auto-configurations (xhtml + Beetl/Freemarker/HTTL/Jetbrick/Rythm/
  * Thymeleaf/Velocity/Webit) and the {@code *TemplateProperties} holders.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  */
 class Docx4jTemplateAutoConfigurationTest {
 

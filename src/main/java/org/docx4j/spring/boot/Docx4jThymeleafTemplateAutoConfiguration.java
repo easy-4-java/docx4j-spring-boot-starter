@@ -16,7 +16,7 @@ import org.thymeleaf.TemplateEngine;
  * Auto-configuration for the Thymeleaf-based Docx template engine, activated when
  * {@code docx4j.enabled=true} and the Thymeleaf {@link TemplateEngine} and
  * {@link WordprocessingMLThymeleafTemplate} classes are present.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 @Configuration

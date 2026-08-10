@@ -3,7 +3,7 @@ package org.docx4j.spring.boot.utils;
 /**
  * String utility that extends Spring's {@link org.springframework.util.StringUtils} with a tokenizer
  * tuned for comma/semicolon/whitespace-delimited lists such as font aliases.
- * @author [@Loong Wan](https://github.com/loong10k)
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
  * @since 1.0.0
  */
 public class StringUtils extends org.springframework.util.StringUtils{
