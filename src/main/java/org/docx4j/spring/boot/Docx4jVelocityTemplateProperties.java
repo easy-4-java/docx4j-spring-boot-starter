@@ -24,6 +24,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jVelocityTemplateProperties.PREFIX)
+/**
+ * <p>Auto-configuration for Docx4jVelocityTemplateProperties.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jVelocityTemplateProperties {
 
 	public static final String PREFIX = "docx4j.template.velocity";

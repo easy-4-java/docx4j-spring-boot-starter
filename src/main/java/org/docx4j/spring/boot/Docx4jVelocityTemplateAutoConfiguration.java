@@ -25,6 +25,11 @@ import org.thymeleaf.TemplateEngine;
 @ConditionalOnClass({ Docx4J.class, TemplateEngine.class , WordprocessingMLVelocityTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jVelocityTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jVelocityTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jVelocityTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLVelocityTemplate} bean backed by the optional {@link VelocityEngine}. @param docx4jProperties docx4j properties @param templateProperties velocity template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Velocity engine @return a configured Velocity Docx template */

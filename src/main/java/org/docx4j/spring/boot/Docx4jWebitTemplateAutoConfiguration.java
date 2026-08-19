@@ -24,6 +24,11 @@ import webit.script.Engine;
 @ConditionalOnClass({ Docx4J.class, Engine.class , WordprocessingMLWebitTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jWebitTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jWebitTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jWebitTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLWebitTemplate} bean backed by the optional Webit {@link Engine}. @param docx4jProperties docx4j properties @param templateProperties webit template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Webit engine @return a configured Webit Docx template */

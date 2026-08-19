@@ -23,6 +23,11 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ Docx4J.class, GroupTemplate.class , WordprocessingMLBeetlTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jBeetlTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jBeetlTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jBeetlTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLBeetlTemplate} bean backed by the optional Beetl {@link GroupTemplate}. @param docx4jProperties docx4j properties @param templateProperties beetl template properties @param wmlHtmlTemplate shared XHTML template @param groupTemplate optional Beetl group template @return a configured Beetl Docx template */

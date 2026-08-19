@@ -24,6 +24,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jThymeleafTemplateProperties.PREFIX)
+/**
+ * <p>Auto-configuration for Docx4jThymeleafTemplateProperties.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jThymeleafTemplateProperties {
 
 	public static final String PREFIX = "docx4j.template.thymeleaf";

@@ -26,11 +26,20 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ Docx4J.class, Jsoup.class, WordprocessingMLHtmlTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jXhtmlTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jXhtmlTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jXhtmlTemplateAutoConfiguration {
 
 	/** Provide the default {@link DocumentHandler} unless one already exists. @return the XHTML document handler */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Document handler.</p>
+	 * @return the result
+	 */
 	public DocumentHandler documentHandler() {
 		return XHTMLDocumentHandler.getDocumentHandler();
 	}
@@ -38,6 +47,10 @@ public class Docx4jXhtmlTemplateAutoConfiguration {
 	/** Provide the default {@link WordprocessingMLPackageBuilder} unless one already exists. @return the package builder */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Word m l package builder.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLPackageBuilder wordMLPackageBuilder() {
 		return WordprocessingMLPackageBuilder.getWMLPackageBuilder();
 	}

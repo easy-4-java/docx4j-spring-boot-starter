@@ -36,12 +36,21 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({ Docx4J.class, WordprocessingMLDocxTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jDocxTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jDocxTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jDocxTemplateAutoConfiguration {
 
 	protected static Logger LOG = LoggerFactory.getLogger(Docx4jDocxTemplateAutoConfiguration.class);
 
 	/** Create the default {@link WordprocessingMLDocxTemplate} bean. @return a new Docx template @throws IOException if initialisation fails */
 	@Bean
+	/**
+	 * <p>Wml docx template.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLDocxTemplate wmlDocxTemplate()
 			throws IOException {
 		WordprocessingMLDocxTemplate template = new WordprocessingMLDocxTemplate();
@@ -50,6 +59,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 
 	/** Create the SAX-based {@link WordprocessingMLDocxSaxTemplate} bean. @return a new SAX Docx template @throws IOException if initialisation fails */
 	@Bean
+	/**
+	 * <p>Wml docx sax template.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLDocxSaxTemplate wmlDocxSaxTemplate()
 			throws IOException {
 		WordprocessingMLDocxSaxTemplate template = new WordprocessingMLDocxSaxTemplate();
@@ -58,6 +71,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 
 	/** Create the StAX-based {@link WordprocessingMLDocxStAXTemplate} bean. @return a new StAX Docx template @throws IOException if initialisation fails */
 	@Bean
+	/**
+	 * <p>Wml docx st a x template.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLDocxStAXTemplate wmlDocxStAXTemplate()
 			throws IOException {
 		WordprocessingMLDocxStAXTemplate template = new WordprocessingMLDocxStAXTemplate();
@@ -67,6 +84,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 	/** Provide the default {@link ConversionHyperlinkHandler} unless one already exists. @return the hyperlink handler */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Hyperlink handler.</p>
+	 * @return the result
+	 */
 	public ConversionHyperlinkHandler hyperlinkHandler() {
 		return OutputConversionHyperlinkHandler.getHyperlinkHandler();
 	}
@@ -74,6 +95,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 	/** Provide the default {@link ConversionHTMLStyleElementHandler} unless one already exists. @return the style element handler */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Style element handler.</p>
+	 * @return the result
+	 */
 	public ConversionHTMLStyleElementHandler styleElementHandler() {
 		return OutputConversionHTMLStyleElementHandler.getStyleElementHandler();
 	}
@@ -81,6 +106,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 	/** Provide the default {@link ConversionHTMLScriptElementHandler} unless one already exists. @return the script element handler */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Script element handler.</p>
+	 * @return the result
+	 */
 	public ConversionHTMLScriptElementHandler scriptElementHandler() {
 		return OutputConversionHTMLScriptElementHandler.getScriptElementHandler();
 	}
@@ -88,6 +117,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 	/** Provide the default {@link WordprocessingMLPackageExtractor} unless one already exists. @return the package extractor */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Wml package extractor.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLPackageExtractor wmlPackageExtractor() {
 		return WordprocessingMLPackageExtractor.getWMLPackageExtractor();
 	}
@@ -108,6 +141,10 @@ public class Docx4jDocxTemplateAutoConfiguration {
 	/** Provide the default {@link WordprocessingMLTemplateWriter} unless one already exists. @return the template writer */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Wml template writer.</p>
+	 * @return the result
+	 */
 	public WordprocessingMLTemplateWriter wmlTemplateWriter() {
 		return WordprocessingMLTemplateWriter.getWMLTemplateWriter();
 	}

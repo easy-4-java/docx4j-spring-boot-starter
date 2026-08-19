@@ -24,6 +24,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jBeetlTemplateProperties.PREFIX)
+/**
+ * <p>Auto-configuration for Docx4jBeetlTemplateProperties.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jBeetlTemplateProperties {
 
 	public static final String PREFIX = "docx4j.template.beetl";

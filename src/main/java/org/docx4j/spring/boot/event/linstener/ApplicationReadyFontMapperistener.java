@@ -45,12 +45,19 @@ public class ApplicationReadyFontMapperistener
 
 	/** When font discovery is enabled, asynchronously build and register the Docx4j font mapper. @param event the application ready event */
 	@Override
+	/**
+	 * <p>On application event.</p>
+	 * @param event
+	 */
 	public void onApplicationEvent(ApplicationReadyEvent event) {
 		if(docx4jProperties.isDiscoverFonts()) {
 			// 使用独立线程初始化字体信息
 			new Thread() {
 				
 				@Override
+				/**
+				 * <p>Run.</p>
+				 */
 				public void run() {
 					try {
 
@@ -179,6 +186,7 @@ public class ApplicationReadyFontMapperistener
 
 	/** Inject the {@link ResourceLoader} used to resolve custom font file locations. @param resourceLoader the resource loader */
 	@Override
+	/** @param resourceLoader set the resource loader. */
 	public void setResourceLoader(ResourceLoader resourceLoader) {
 		this.resourceLoader = resourceLoader;
 	}

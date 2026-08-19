@@ -24,6 +24,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 1.0.0
  */
 @ConfigurationProperties(Docx4jXhtmlTemplateProperties.PREFIX)
+/**
+ * <p>Auto-configuration for Docx4jXhtmlTemplateProperties.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jXhtmlTemplateProperties {
 
 	public static final String PREFIX = "docx4j.template.xhtml";

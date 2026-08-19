@@ -24,6 +24,11 @@ import httl.Engine;
 @ConditionalOnClass({ Docx4J.class, Engine.class , WordprocessingMLHttlTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jHttlTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jHttlTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jHttlTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLHttlTemplate} bean backed by the optional HTTL {@link Engine}. @param docx4jProperties docx4j properties @param templateProperties httl template properties @param wmlHtmlTemplate shared XHTML template @param engine optional HTTL engine @return a configured HTTL Docx template */

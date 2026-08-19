@@ -25,11 +25,20 @@ import net.engio.mbassy.bus.error.IPublicationErrorHandler;
 @ConditionalOnClass({ Docx4J.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jAutoConfiguration {
 
 	/** Provide a default SLF4J-backed {@link IPublicationErrorHandler} unless one already exists. @return an Slf4jLogger */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Error handler.</p>
+	 * @return the result
+	 */
 	public IPublicationErrorHandler errorHandler() {
 		return new Slf4jLogger();
 	}
@@ -38,6 +47,11 @@ public class Docx4jAutoConfiguration {
 	 *  and bind it to {@link Docx4J} as its global event notifier. @param errorHandler publication error handler @return a new MBassador event bus */
 	@Bean
 	@ConditionalOnMissingBean
+	/**
+	 * <p>Eventbus.</p>
+	 * @param errorHandler
+	 * @return the result
+	 */
 	public MBassador<Docx4jEvent> eventbus(IPublicationErrorHandler errorHandler) {
 		MBassador<Docx4jEvent> bus = new MBassador<>(errorHandler);
 		Docx4J.setEventNotifier(bus);
@@ -46,6 +60,11 @@ public class Docx4jAutoConfiguration {
 
 	/** Register the {@link ApplicationReadyFontMapperistener} that initialises the Docx4j font mapper. @param docx4jProperties docx4j properties @return the font mapper listener */
 	@Bean
+	/**
+	 * <p>Font mapperistener.</p>
+	 * @param docx4jProperties
+	 * @return the result
+	 */
 	public ApplicationReadyFontMapperistener fontMapperistener(Docx4jProperties docx4jProperties) {
 		return new ApplicationReadyFontMapperistener(docx4jProperties);
 	}

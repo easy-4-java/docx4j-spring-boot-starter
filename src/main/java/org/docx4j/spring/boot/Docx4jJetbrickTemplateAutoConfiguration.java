@@ -25,6 +25,11 @@ import jetbrick.template.JetEngine;
 @ConditionalOnClass({ Docx4J.class, JetEngine.class , WordprocessingMLJetbrickTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jJetbrickTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jJetbrickTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jJetbrickTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLJetbrickTemplate} bean backed by the optional Jetbrick {@link JetEngine}. @param docx4jProperties docx4j properties @param templateProperties jetbrick template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Jetbrick engine @return a configured Jetbrick Docx template */

@@ -24,6 +24,11 @@ import org.thymeleaf.TemplateEngine;
 @ConditionalOnClass({ Docx4J.class, TemplateEngine.class , WordprocessingMLThymeleafTemplate.class })
 @ConditionalOnProperty(prefix = Docx4jProperties.PREFIX, value = "enabled", havingValue = "true")
 @EnableConfigurationProperties({ Docx4jProperties.class, Docx4jThymeleafTemplateProperties.class })
+/**
+ * <p>Auto-configuration for Docx4jThymeleafTemplateAutoConfiguration.</p>
+ * @author <a href="https://github.com/loong10k">Loong Wan</a>
+ * @since 1.0.0
+ */
 public class Docx4jThymeleafTemplateAutoConfiguration {
 
 	/** Create the {@link WordprocessingMLThymeleafTemplate} bean backed by the optional Thymeleaf {@link TemplateEngine}. @param docx4jProperties docx4j properties @param templateProperties thymeleaf template properties @param wmlHtmlTemplate shared XHTML template @param engine optional Thymeleaf template engine @return a configured Thymeleaf Docx template */
